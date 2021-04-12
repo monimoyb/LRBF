@@ -1,4 +1,4 @@
-%% Uncertainty Support Construction for Truncated Gaussian Case: Bootsrap
+%% Disturbance Support Construction for Truncated Gaussian Case: Bootsrap
 % Monimoy Bujarbaruah
 % Akhil Shetty
 %%
@@ -80,7 +80,7 @@ function [W, Xn, Pinf, conf_possible] = w_constructGauss(w_samples, conf, nx,nu,
 
             constraints = []; 
 
-           %%  Open Loop W Variables
+           %% Open Loop W Variables Stacked
 
             Hs=[]; hs =[]; 
             for k = 1:N
