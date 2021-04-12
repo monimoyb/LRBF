@@ -15,22 +15,22 @@ rng(3)
 % Set cvxFlag = 1 and blow = 1 for inflated cvxhull of seen disturbance samples as support estimate
 % blow_size decides the inflation factor. 
 cvxFlag = 0;                                 % if 1 then ONLY convex hull of seen disturbances is considered 
-blow = 0;                                     % one can choose to inflate the cvx hull 
+blow = 0;                                    % one can choose to inflate the cvx hull 
 blow_size = 2; 
-soft_flg = 1;                                 % 1 for slacks and 0 for hard constraints 
-iC  = 30;                                      % Number of iterations to run 
+soft_flg = 1;                                % 1 for slacks and 0 for hard constraints 
+iC  = 30;                                    % Number of iterations to run 
 
 %% Loading all system parameters
 init_SampleSize = 5;
 [A,B,C,D,b,X,U,nx,nu,~,~, x_0,Q,R,N,trueMu,trueStd, x_ref,simsteps] = sys_load(); 
-Wslack = 10000;                                                     % constraint softening 
+Wslack = 10000;                                                   % constraint softening 
 mont_count = 100;                                                 % MC run count 
 cost_iter = zeros(mont_count,iC); 
-prob_fail = zeros(iC,mont_count);                             % prob mass missing in \hat{W}^j in an iteration
+prob_fail = zeros(iC,mont_count);                                 % prob mass missing in \hat{W}^j in an iteration
 
 %% Needed only for LRBF
 if cvxFlag == 0
-    conf = 0.9875;                                                    % desired confidence value 
+    conf = 0.9875;                                                % desired confidence value 
     conf_array = zeros(mont_count,iC); 
 end
 
@@ -69,7 +69,7 @@ for mc = 1: mont_count
                 if iter_count ~=1
                     intr = intersect(Xn0,Xn); 
                     contXn_flag = Xn0.contains(Xn);                    % should be always 1
-                    eqXn_flag = isEmptySet(intr-Xn);                  % 0 is good
+                    eqXn_flag = isEmptySet(intr-Xn);                   % 0 is good
                 end   
             else
                 disp('INSIDE CVX AND NO BLOW LOOP')
@@ -149,7 +149,7 @@ for mc = 1: mont_count
 
             %% Obtaining Closed Loop Parameters 
             v_hor = double(v);
-            u_cl = v_hor(1:nu,:);                                                     % Closed loop control 
+            u_cl = v_hor(1:nu,:);                                                     
             eps_cl = double(epsilon);
             eps_cl = eps_cl(1:size(C,1),1);         
             %% Actual System Simulation in Closed Loop 
