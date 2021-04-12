@@ -1,4 +1,4 @@
-%% Monte Carlo Simulations with in each iteration: Gaussian 
+%% Monte Carlo Simulations: Clipped Gaussian 
 % Monimoy Bujarbaruah
 % Akhil Shetty 
 %%
@@ -7,7 +7,6 @@
 function [prob_fail] = monte_carloSimGauss(W,trueMu,trueStd,nx)
 
     gaussPol = Polyhedron('lb',trueMu-3*trueStd,'ub',trueMu+3*trueStd);
-
     flg = 0; mont_count = 1000; flgProb = zeros(mont_count,1);
     
     %%% REJECTION SAMPLING 
@@ -24,7 +23,7 @@ function [prob_fail] = monte_carloSimGauss(W,trueMu,trueStd,nx)
                 flg = 0;
             end
         end
-         flgProb(i,1) = W.contains(w);                                            % check belonging to our constructed polytope
+         flgProb(i,1) = W.contains(w);                              % check belonging to our constructed polytope
          flg = 0; 
     end
 
