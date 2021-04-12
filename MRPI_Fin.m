@@ -1,14 +1,10 @@
-%% Maximal Disturbance Invariant Set Computation 
-% Finite horizon only
+%% (Simsteps-N) step Robust Reachable Set with Policy u = Kx 
 % Monimoy Bujarbaruah
 % Akhil Shetty 
 
 function P = MRPI_Fin(model, X, W, simsteps, N)
-    % computation of a robust invariant set for given LTImodel 
-    %
 
     X0 = X;                                 % initial set constraint
-
     for j = 1:simsteps-N
         % subtract noise    
         S = X0 - W;
