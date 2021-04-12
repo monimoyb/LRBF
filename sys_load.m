@@ -22,7 +22,7 @@ function [A,B,C,D,b,X,U,nx,nu,wub_true,wlb_true, x_0, Q,R,N, trueMu, trueStd, x_
     U = Polyhedron('A',D(5:6,:),'b',b(5:6,:));    
     %% Defining disturbance  bounds 
     wub_true = 3;                                  % Upper bound 
-    wlb_true = -3;                                  % Lower bound 
+    wlb_true = -3;                                 % Lower bound 
     %% Moments of clipped Gaussian
     trueMu =  zeros(nx,1);
     trueStd = ones(nx,1); 
