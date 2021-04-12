@@ -1,4 +1,4 @@
-%% Uncertainty Support Construction in the beginning of an iteration
+%% Disturbance Support Construction: Uniform Case
 % Monimoy Bujarbaruah
 % Akhil Shetty
 %%
@@ -15,7 +15,7 @@ function [w_lb, w_ub, Xn, Pinf, conf_possible, scal_val] = w_construct(w_samples
 
     while feas_conf == 0     
         conf = conf/(2^count);
-        alpha = 1/(1-conf)^(1/size(w_samples,2));                                       % for uniform distribution
+        alpha = 1/(1-conf)^(1/size(w_samples,2));                                       
 
         l_maxScaled = alpha*w_maxSeen;
         w_lb = -l_maxScaled; w_ub = l_maxScaled;                                    
