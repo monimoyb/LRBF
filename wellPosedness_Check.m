@@ -60,6 +60,7 @@ constraints = [constraints; matF*v + Z'*hs <= mat_c + matH*x_0];
 constraints = [constraints; Z>=0];
 constraints = [constraints, matF*M + matG == Z'*Hs];
 diagn=solvesdp(constraints, [], options);
+
 %% Flag
 feas = diagn.problem;   % must be 0
   
